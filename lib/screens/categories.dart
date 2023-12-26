@@ -1,17 +1,21 @@
+import 'package:cook_it_up/models/category.dart';
 import 'package:cook_it_up/screens/meals.dart';
 import 'package:cook_it_up/widgets/category_grid_item.dart';
 import 'package:flutter/material.dart';
 import 'package:cook_it_up/data/dummy_data.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  CategoriesScreen({super.key});
+  const CategoriesScreen({super.key});
 
-  final categories = List.of(availableCategories);
+  // final categories = List.of(availableCategories);
 
-  void _selectCategory(BuildContext context) {
+  void _selectCategory(BuildContext context, Category category) {
+    final categoryMeals =
+        dummyMeals.where((meal) => meal.categories.contains(category.id));
     Navigator.of(context).push(
       MaterialPageRoute(
-        builder: (ctx) => const MealsScreen(title: 'some title', meals: []),
+        builder: (ctx) =>
+            MealsScreen(title: category.title, meals: categoryMeals.toList()),
       ),
     );
     // Navigator.push(context, route)
@@ -32,10 +36,10 @@ class CategoriesScreen extends StatelessWidget {
             mainAxisSpacing: 20,
           ),
           children: [
-            ...categories.map((category) => CategoryGridItem(
+            ...availableCategories.map((category) => CategoryGridItem(
                   category: category,
                   onSelectCategory: () {
-                    _selectCategory(context);
+                    _selectCategory(context, category);
                   },
                 ))
           ]),
