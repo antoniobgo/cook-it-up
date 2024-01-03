@@ -1,6 +1,4 @@
-import 'package:cook_it_up/screens/categories.dart';
-// import 'package:cook_it_up/screens/meals.dart';
-// import 'package:cook_it_up/data/dummy_data.dart';
+import 'package:cook_it_up/screens/tabs.dart';
 import 'package:flutter/material.dart';
 
 import 'package:google_fonts/google_fonts.dart';
@@ -25,7 +23,8 @@ class App extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: theme,
-      home: const CategoriesScreen(),
+      home: const TabsScreen(),
+      // home: const CategoriesScreen(),
       // home: const MealsScreen(title: 'some category', meals: []),
     );
   }
