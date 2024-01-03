@@ -1,6 +1,7 @@
 import 'package:cook_it_up/models/meal.dart';
 import 'package:cook_it_up/screens/categories.dart';
 import 'package:cook_it_up/screens/meals.dart';
+import 'package:cook_it_up/widgets/main_drawer.dart';
 import 'package:flutter/material.dart';
 
 class TabsScreen extends StatefulWidget {
@@ -62,6 +63,7 @@ class _TabsScreenState extends State<TabsScreen> {
       appBar: AppBar(
         title: Text(title),
       ),
+      drawer: const MainDrawer(),
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
         onTap: (index) {
