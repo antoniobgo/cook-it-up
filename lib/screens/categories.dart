@@ -6,14 +6,16 @@ import 'package:flutter/material.dart';
 import 'package:cook_it_up/data/dummy_data.dart';
 
 class CategoriesScreen extends StatelessWidget {
-  const CategoriesScreen({super.key, required this.onToggleFavorite});
+  const CategoriesScreen(
+      {super.key, required this.onToggleFavorite, required this.avalableMeals});
 
   // final categories = List.of(availableCategories);
   final void Function(Meal meal) onToggleFavorite;
+  final List<Meal> avalableMeals;
 
   void _selectCategory(BuildContext context, Category category) {
     final categoryMeals =
-        dummyMeals.where((meal) => meal.categories.contains(category.id));
+        avalableMeals.where((meal) => meal.categories.contains(category.id));
     Navigator.of(context).push(
       MaterialPageRoute(
         builder: (ctx) => MealsScreen(
